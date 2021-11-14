@@ -101,8 +101,8 @@
                                 console.log("Error adding new user: " + error);
                             });
                     } else {
-                        return true;
-                    }
+                        window.location.assign("main.html"); //replacing with this line will fix old users getting error
+                    } 
                     return false;
                 },
                 uiShown: function () {

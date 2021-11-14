@@ -112,15 +112,15 @@
 
         </div>
     </div>
-    
+
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script>
         function read_display_Quote() {
             db.collection("quotes").doc(
-                    "Tuesday"
-                    ) //name of the collection and documents should matach excatly with what you have in Firestore
+                "Tuesday"
+            ) //name of the collection and documents should matach excatly with what you have in Firestore
                 .onSnapshot(TuesdayDoc => { //
                     //console.log("current document data: " + TuesdayDoc.data()); //.data() returns data object
                     document.getElementById("quote-goes-here").innerHTML = TuesdayDoc.data()
@@ -184,7 +184,7 @@
                 length_time: "3h 20m"
             });
         }
-
+        writeHikes();
 
         function displayHikes() {
             db.collection("Hikes").get()
@@ -192,12 +192,17 @@
                     allHikes.forEach(doc => {
                         var hikeName = doc.data().name; //gets the name field
                         var hikeID = doc.data().code; //gets the unique ID field
+                        console.log(hikeID);
                         document.getElementById(hikeID).innerText = hikeName;
                     })
 
                 })
         }
-        //displayHikes();
+        displayHikes();
+
+        function setHikeData(id) {
+            localStorage.setItem('hikeID', id);
+        }
     </script>
 
 </body>
